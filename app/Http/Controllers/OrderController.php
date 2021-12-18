@@ -56,6 +56,7 @@ class OrderController extends BaseController
 
     public function update(Orders $order)
     {
+        // dd(request()->all());
         $product = Products::find(request('product_id'));
 
         if ($product == null) {
@@ -74,6 +75,17 @@ class OrderController extends BaseController
             data: $hasil ? $order : null,
             error: $hasil ? null : ['gagal merubah data'],
             code: $hasil ? 201 : 504
+        );
+    }
+
+    public function delete(Orders $order)
+    {
+        $hasil = $order->delete();
+        return $this->out(
+            status: $hasil ? 'OK'  : 'Gagal',
+            data: $hasil ? $order : null,
+            error: $hasil ? null : ['gagal hapus data'],
+            code: $hasil ? 200 : 504
         );
     }
 }
