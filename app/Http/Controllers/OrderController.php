@@ -53,4 +53,27 @@ class OrderController extends BaseController
 
         return $this->out(data: $data, status: 'OK');
     }
+
+    public function update(Orders $order)
+    {
+        $product = Products::find(request('product_id'));
+
+        if ($product == null) {
+            return $this->out(status: 'Gagal', code: 404, error: ['Produk tidak ditemukan']);
+        }
+
+        $order->product_id  = $product->id;
+        $order->customer_id = request('customer_id');
+        $order->qty         = request('qty');
+        $order->price       = $product->price;
+
+        $hasil              = $order->save();
+
+        return $this->out(
+            status: $hasil ? 'OK'  : 'Gagal',
+            data: $hasil ? $order : null,
+            error: $hasil ? null : ['gagal merubah data'],
+            code: $hasil ? 201 : 504
+        );
+    }
 }
