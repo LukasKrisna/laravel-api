@@ -6,6 +6,11 @@ use Illuminate\Http\Request, App\Models\Orders, App\Models\Products, Carbon\Carb
 
 class OrderController extends BaseController
 {
+    public function __construct()
+    {
+        $this->middleware('authorization');
+    }
+
     public function store()
     {
         $product = Products::find(\request('product_id'));
