@@ -1,6 +1,9 @@
 @extends('template')
 
 @section('konten')
+
+@include('modalorder')
+
 <table class="table table-border table-stripped">
     <thead>
         <tr>
