@@ -20,8 +20,8 @@
                     <select name="product_id" id="product_id" class="form-control"></select>
                 </div>
                 <div class="mb-3">
-                    <label for="qty" class="form-label">Produk</label>
-                    <input type="number" name="qty" id="" class="form-control">
+                    <label for="qty" class="form-label">Qty</label>
+                    <input type="number" name="qty" id="qty" class="form-control">
                 </div>
             </div>
             <div class="modal-footer">

@@ -9,7 +9,7 @@ function fillCustomer() {
             var content = '';
             for (var i = 0 ;  i < data.length; i++) {
                 var item = data[i];
-                content += `<option value="${item.id}">${item.first_name} ${item.first_name}</option>`;             
+                content += `<option value='${item.id}'>${item.first_name} ${item.last_name}</option>`;             
             }
             $('select[name=customer_id]').html(content);
         },
@@ -65,8 +65,8 @@ function save( id ) {
 }
 
 document.addEventListener('DOMContentLoaded', (c)=>{
-    fillCustomer;
-    fillProduct;
+    fillCustomer();
+    fillProduct();
 
     $('button#simpan').on('click', (e)=>{
         save();
