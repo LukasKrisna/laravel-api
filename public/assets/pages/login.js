@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', (c) => {
             dataType: 'json',
             method: 'GET',
             headers: {
-                'Authorization': 'basic ' + window.btoa(email + ':' + password)
+                'Authorization': 'basic ' + window.btoa(email + ':' + sandi)
             },
             success: (msg)=>{
-                alert('Selamat datang ${msg.data.first_name} ${msg.data.last_name}');
+                alert(`Selamat datang ${msg.data.first_name} ${msg.data.last_name}`);
                 window.localStorage.setItem('token', msg.data.token);
                 window.location = '/list-order';
             },
