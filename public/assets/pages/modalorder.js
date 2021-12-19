@@ -3,7 +3,7 @@ function fillCustomer() {
         url: '/api/customers',
         method: 'GET',
         dataType: 'json',
-        header:{ 'token': window.localStorage['token'] },
+        headers:{ 'token': window.localStorage['token'] },
         success:(res)=>{
             var data    = res.data.data;
             var content = '';
@@ -24,7 +24,7 @@ function fillProduct() {
         url: '/api/products',
         method: 'GET',
         dataType: 'json',
-        header:{ 'token': window.localStorage['token'] },
+        headers:{ 'token': window.localStorage['token'] },
         success:(res)=>{
             var data    = res.data.data;
             var content = '';
@@ -50,7 +50,7 @@ function save( id ) {
             'customer_id' : $('select[name=customer_id]').val(),
             'qty': $('input[name=qty]').val()
         },
-        header: { 'token': window.localStorage['token'] },
+        headers: { 'token': window.localStorage['token'] },
         success:(res)=>{
             console.log('sukses', res);
             alert('data order berhasil direkam');

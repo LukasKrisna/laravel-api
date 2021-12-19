@@ -34,11 +34,39 @@ function refreshData() {
 }
 
 function hapus(id) {
-    
+    $.ajax({
+       url: '/api/orders/' + id,
+       method: 'DELETE',
+       type: 'json',
+       headers: { 'token': window.localStorage['token'] },
+       success:(res)=>{
+            alert('Data berhasil dihapus');
+            refreshData();
+       },
+       error:(res, status, err)=>{
+           alert('Gagal hapus data');
+       } 
+    });
 }
 
 function edit(id) {
-    
+    $.ajax({
+        url: '/api/orders/' + id,
+        method: 'PATCH',
+        type: 'json',
+        headers: { 'token': window.localStorage['token'] },
+        success: (res) => {
+            $('#modalOrder').modal('show');
+            $('input[name=id]').val(res.data.id);
+            $('select[name=customer_id]').val(res.data.customer_id);
+            $('select[name=product_id]').val(res.data.product_id);
+            $('input[name=qty]').val(res.data.qty);
+            console.log('edit : ', res);
+        },
+        error: (res, status, err) => {
+            alert('Gagal ambil data');
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', (c)=>{
